@@ -117,7 +117,7 @@ def paint(x, y, pal):
    buf = bytearray(1024)
    start = addressof(buf)
    end = start+sizeof(buf)
-   x68k.iocs(x68k.i.PAINT,a1=pack('5h',x,y,pal,start,end))
+   x68k.iocs(x68k.i.PAINT,a1=pack('3h2l',x,y,pal,start,end))
 
 # sample main
 def main():
