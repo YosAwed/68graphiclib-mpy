@@ -1,5 +1,6 @@
 import x68k
-import machine
+from ctypes import addressof
+from ctypes import sizeof
 
 from struct import pack
 
@@ -112,7 +113,10 @@ def circle(x, y, r, pal, start, end, p):
 #	作業領域は偶数番地から始まる必要があり、不足した場合はペイント途中で戻る.
 #==============================================================================
 
-def paint(x, y, pal,start,end):
+def paint(x, y, pal):
+   buf = bytearray(1024)
+   start = addressof(buf)
+   end = start+sizeof(buf)
    x68k.iocs(x68k.i.PAINT,a1=pack('5h',x,y,pal,start,end))
 
 # sample main
@@ -125,14 +129,15 @@ def main():
   
   g0 = x68k.GVRam(0)
   g0.window(0, 0, 511, 511)
-  g0.fill(0, 0, 511, 511, 0)
+  fill(0, 0, 511, 511, 0)
   x68k.vpage(1)
   
   line(0,0,511,511,0x1234,0xffff)
-  box(100,100,200,200,0x54de,0xffee)
+  box(100,100,200,200,0x54de,0xafee)
+  fill(110,110,190,190,0xdc00)
   circle(300,300,40,0xfefe,10,200,1000)
   box(200,200,400,400,0xffee,0xffff)
-  #paint(230,300,0xffee,???,???)
+  paint(210,205,0xf0a0)
 
 
 
