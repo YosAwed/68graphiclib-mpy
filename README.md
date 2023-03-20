@@ -8,4 +8,6 @@ IOCSコールをそのまま書かずに、XBASIC風に書けるようするシ�
 
 とりあえず
 
-line / box / fill / circle / paint　と書いてみたが、PAINTの開始終了アドレスがなんだったか思い出せない
+line / box / fill / circle / paint
+
+<img width="824" alt="202303201928340568" src="https://user-images.githubusercontent.com/4214168/226313815-2519c3b6-f46c-4fc3-b028-7a7099f2a9f8.png">
